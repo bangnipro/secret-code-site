@@ -1,27 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="my">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Secret Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secret Code Site</title>
+  <style>
+    body {
+      background: #101827;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px 16px;
+    }
+    input, button {
+      padding: 12px;
+      margin: 6px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button { cursor: pointer; }
+    #message { margin-top: 24px; }
+  </style>
 </head>
-<body style="background:#101827;color:white;text-align:center;padding:50px;font-family:sans-serif">
-
+<body>
   <h1>🔐 Secret Message</h1>
   <p>လျှို့ဝှက် Code ရိုက်ထည့်ပါ</p>
 
-  <input id="secret" type="password" placeholder="Enter secret code"
-  style="padding:12px;border-radius:8px">
+  <input id="secret" type="password"
+         placeholder="Enter secret code">
 
-  <button onclick="checkCode()" style="padding:12px">
-    Unlock
-  </button>
+  <button id="unlock">Unlock</button>
 
-  <p id="message" style="margin-top:30px;font-size:20px"></p>
+  <p id="message"></p>
 
   <script>
-    function checkCode() {
-      const code = document.getElementById("secret").value;
+    document.getElementById("unlock").addEventListener("click", function () {
+      const code = document.getElementById("secret").value.trim();
+      const message = document.getElementById("message");
 
       if (code === "BRO2026") {
-        document.getElementBy
+        message.textContent = "❤️ မင်းအတွက် ရည်ရွယ်ထားတဲ့ စာကြောင်းလေးပါ";
+      } else {
+        message.textContent = "❌ Code မှားနေပါတယ်";
+      }
+    });
+  </script>
+</body>
+</html>
