@@ -1,48 +1,156 @@
-
 <!DOCTYPE html>
-<html lang="my">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UZX</title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Code Site | Crypto Reward</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background: #101827;
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(3, 8, 20, 0.35),
+          rgba(3, 8, 20, 0.05)
+        ),
+        url("background.png") center center / cover no-repeat fixed;
+      background-color: #050914;
       color: white;
-      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
       text-align: center;
-      padding: 50px 16px;
+      padding: 30px 24px;
+      background: rgba(4, 9, 20, 0.82);
+      border: 1px solid rgba(255, 193, 70, 0.5);
+      border-radius: 18px;
+      box-shadow: 0 0 35px rgba(255, 174, 0, 0.12);
+      backdrop-filter: blur(8px);
     }
-    input, button {
-      padding: 12px;
-      margin: 6px;
-      border-radius: 8px;
+
+    .brand {
+      color: #f8c65b;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 24px 0 10px;
+    }
+
+    h1 span {
+      color: #f8c65b;
+    }
+
+    p {
+      color: #c8cbd4;
+      line-height: 1.6;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      margin: 18px 0 12px;
+      border: 1px solid #a67c28;
+      border-radius: 9px;
+      background: #111827;
+      color: white;
       font-size: 16px;
+      text-align: center;
+      outline: none;
     }
-    button { cursor: pointer; }
-    #message { margin-top: 24px; }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #ffe6a0, #c58a18);
+      color: #15100a;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #message {
+      display: none;
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid #f8c65b;
+      border-radius: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    #message h2 {
+      color: #f8c65b;
+    }
+
+    .note {
+      font-size: 12px;
+      margin-top: 24px;
+    }
   </style>
 </head>
+
 <body>
-  <h1>💰Claim BTC💰</h1>
-  <p>blah blah</p>
+  <main class="container">
+    <div class="brand">🔐 SECRET CODE SITE</div>
 
-  <input id="secret" type="password"
-         placeholder="Enter secret code">
+    <h1>Unlock Your<br><span>Crypto Reward</span></h1>
 
-  <button id="unlock">Unlock</button>
+    <p>A secret code. A special gift. ♡</p>
 
-  <p id="message"></p>
+    <form id="codeForm">
+      <input
+        id="secretCode"
+        type="password"
+        placeholder="Enter your secret code"
+        autocomplete="off"
+        required
+      >
+      <button type="submit">UNLOCK MY GIFT ✨</button>
+    </form>
+
+    <div id="message">
+      <h2>🎁 Your Special Gift!</h2>
+      <p id="loveMessage">
+        You are someone truly special to me. ❤️
+      </p>
+    </div>
+
+    <p class="note">The best things are hidden... ♡</p>
+  </main>
 
   <script>
-    document.getElementById("unlock").addEventListener("click", function () {
-      const code = document.getElementById("secret").value.trim();
-      const message = document.getElementById("message");
+    const form = document.getElementById("codeForm");
 
-      if (code === "123456") {
-        message.textContent = "351o7q79WSVPxhStvDuu7hB2x9RnkJ3EmV";
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const enteredCode =
+        document.getElementById("secretCode").value;
+
+      // Demo only: replace with a server-side check.
+      const correctCode = "LOVE2026";
+
+      if (enteredCode === correctCode) {
+        document.getElementById("message").style.display = "block";
       } else {
-        message.textContent = "❌ wrong password";
+        alert("Incorrect code. Try again ❤️");
       }
     });
   </script>
